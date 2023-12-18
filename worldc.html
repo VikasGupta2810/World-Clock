@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>World Clock</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('pngwing.com.png'); 
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            margin: 0;
+            padding: 0;
+        }
+
+
+        .time-card {
+            width: 320px;
+            margin: 20px auto;
+            background-color: #fff;
+            border: 1px solid #ccc;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 5px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #333;
+        }
+
+        .time-info {
+            margin-top: 20px;
+        }
+
+        .time-info div {
+            margin-bottom: 12px;
+        }
+
+        .timezone-label {
+            font-size: 18px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .timezone-name {
+            font-size: 20px;
+            color: #222;
+        }
+
+        .additional-info {
+            font-size: 16px;
+            color: #777;
+        }
+        .time-card {
+    border: 8px solid rgb(57, 177, 210);
+}
+    </style>
+</head>
+<body>
+    <h1 style="color: rgb(0, 139, 163); text-align: center; font-family: 'Arial', sans-serif; font-size: 36px; font-weight: bold; text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);">Live World Clock</h1>
+
+    <div class="time-card" id="gmt-card">
+        <h2>GMT</h2>
+        <div class="time-info">
+            <div>
+                <div class="timezone-label">Time:</div>
+                <div class="timezone-name" id="gmt"></div>
+            </div>
+            <div>
+                <div class="timezone-label">Additional Info:</div>
+                <div class="additional-info">Greenwich Mean Time (GMT)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="time-card" id="cet-card">
+        <h2>CET</h2>
+        <div class="time-info">
+            <div>
+                <div class="timezone-label">Time:</div>
+                <div class="timezone-name" id="cet"></div>
+            </div>
+            <div>
+                <div class="timezone-label">Additional Info:</div>
+                <div class="additional-info">Central European Time (CET)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="time-card" id="est-card">
+        <h2>EST</h2>
+        <div class="time-info">
+            <div>
+                <div class="timezone-label">Time:</div>
+                <div class="timezone-name" id="est"></div>
+            </div>
+            <div>
+                <div class="timezone-label">Additional Info:</div>
+                <div class="additional-info">Eastern Standard Time (EST)</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="time-card" id="ist-card">
+        <h2>IST</h2>
+        <div class="time-info">
+            <div>
+                <div class="timezone-label">Time:</div>
+                <div class="timezone-name" id="ist"></div>
+            </div>
+            <div>
+                <div class="timezone-label">Additional Info:</div>
+                <div class="additional-info">Indian Standard Time (IST)</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function updateClock() {
+            const gmtTime = new Date().toUTCString();
+            const cetTime = new Date().toLocaleString('nl-NL', { timeZone: 'Europe/Berlin' });
+            const estTime = new Date().toLocaleString('nl-NL', { timeZone: 'America/New_York' });
+            const istTime = new Date().toLocaleString('nl-NL', { timeZone: 'Asia/Kolkata' });
+
+            document.getElementById('gmt').innerHTML = gmtTime;
+            document.getElementById('cet').innerHTML = cetTime;
+            document.getElementById('est').innerHTML = estTime;
+            document.getElementById('ist').innerHTML = istTime;
+        }
+
+        setInterval(updateClock, 1000);
+    </script>
+</body>
+</html>
+
+
